@@ -2,7 +2,6 @@
 
 SupabasePipeline is a lightweight, client-side tool that instantly converts any CSV file into ready-to-run SQL for [Supabase](https://supabase.com). It auto-detects column types, lets you edit schema on the fly, and generates `CREATE TABLE` + sample `INSERT` statements — all in your browser. No uploads, no server, no tracking.
 
-![SupabasePipeline preview](https://your-vercel-url.vercel.app/og-image.png)
 
 ## ✨ Features
 
