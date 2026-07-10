@@ -1,48 +1,99 @@
-# SupabasePipeline · CSV to SQL Converter & Schema Editor
+# ◰ supabasePipeline
 
-SupabasePipeline is a lightweight, client-side tool that instantly converts any CSV file into ready-to-run SQL for [Supabase](https://supabase.com). It auto-detects column types, lets you edit schema on the fly, and generates `CREATE TABLE` + sample `INSERT` statements — all in your browser. No uploads, no server, no tracking.
+**Convert any CSV to Supabase-ready SQL – instantly, in your browser.**
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)](https://supabasepipeline.vercel.app/)
 
-## Features
+> No uploads. No servers. Your data stays local.
 
-- **Drag & drop CSV import** – instantly loads your data
-- **Smart type inference** – automatically detects `TEXT`, `INTEGER`, `FLOAT`, `BOOLEAN`, or `TIMESTAMP`
-- **Interactive schema editor** – rename columns, change types, set nullable, toggle primary keys
-- **Live SQL preview** – updates as you edit, copy with one click
-- **Data preview** – see the first 120 rows, edit cell values, toggle a sample row
-- **Works 100% offline** – runs entirely in your browser (no server, no API)
-- **Lightweight & fast** – single HTML file, no dependencies besides Papa Parse (loaded from CDN)
+---
 
-## Live Demo
+## 🔧 What it does
 
-Try it now: [https://supabasepipeline.vercel.app](https://supabasepipeline.vercel.app)
+`supabasePipeline` is a 100% client-side tool that helps you turn messy CSV files into clean SQL for Supabase. It automatically detects column types, lets you visually map (and merge) columns, and generates both `CREATE TABLE` and `INSERT` statements – all without ever sending your data to a server.
 
-## How to use
+---
 
-1. **Upload your CSV**  
-   Drag a CSV file onto the drop zone or click to browse. The file must have headers in the first row.
+## ✨ Features
 
-2. **Review & adjust the schema**  
-   - Click any column name to rename it.  
-   - Click the **⋮** (kebab) menu to change data type, set nullable, or toggle primary key.  
-   - Edit any cell directly in the table to fix values.  
-   - Click **⟳ infer types** to re‑analyze types from the full dataset.
+- **Drag & drop mapping** – drag CSV columns onto Supabase columns
+- **Auto‑type detection** – infers integers, dates, booleans, and text
+- **Merge columns** – combine multiple CSV columns into one (e.g., `first_name` + `last_name` → `full_name`)
+- **Auto‑delimiter detection** – when merging, it picks the right separator (space, comma, hyphen, etc.)
+- **Rename target columns** – double‑click or use the ✎ button
+- **Fetch existing schema** – connect to Supabase (read‑only) to match your existing table
+- **Generate SQL** – `CREATE TABLE` and `INSERT` statements with one click
+- **Push directly** – insert data into Supabase via the API (requires insert permission)
+- **Auto‑map toggle** – turn automatic mapping on/off
 
-3. **Generate SQL**  
-   The SQL panel updates live. You can:  
-   - Change the table name (top left).  
-   - Click **copy sql** to copy the entire `CREATE TABLE` + sample `INSERT` statements.  
+---
 
-4. **Deploy to Supabase**  
-   After copying, a handy guide appears with a link to the Supabase SQL Editor. Paste your SQL and run it.
+## 🚀 Live Demo
 
-## Local development
+Try it now: [supabasepipeline.vercel.app](https://supabasepipeline.vercel.app/)
 
-Because it's a single HTML file, you can run it anywhere:
+---
 
-```bash
-# Clone the repository
-git clone https://github.com/supabasepipeline/csv-to-sql.git
+## 📖 How to use
 
-# Open the file directly in your browser
-open supabasePipeline/index.html
+### 1. Upload your CSV
+Click the file input or drag a `.csv` file into the upload area. The tool will parse the headers and sample rows to infer column types.
+
+### 2. (Optional) Fetch your Supabase schema
+Enter your Supabase URL, anon key, and table name, then click **Fetch**. This will pull the existing column names and data types so you can map your CSV to an existing table.
+
+### 3. Map columns
+- **Drag** a source column (green chip) and drop it onto a target column (purple/blue chip).
+- **Click** a source column, then click a target column (alternative).
+- **Merge** multiple sources into one target: drag a second source onto an already‑mapped target – the tool will automatically detect a delimiter and merge them.
+
+### 4. Generate SQL or push
+- **CREATE** – generates the full `CREATE TABLE IF NOT EXISTS` SQL. Copy it and run in Supabase SQL Editor.
+- **INSERT** – generates the `INSERT INTO ... VALUES` statements.
+- **PUSH** – directly inserts the data into Supabase via the REST API (requires insert permission and a key with proper RLS).
+
+---
+
+## 🔒 Privacy & Security
+
+- All processing happens **client‑side** – your CSV, Supabase keys, and data are **never sent** to any third‑party server.
+- The Supabase API calls are made directly from your browser, using the credentials you provide.
+
+---
+
+## 🧩 Technical Stack
+
+- Vanilla JavaScript (ES6)
+- Tailwind CSS (via CDN)
+- Papa Parse – CSV parsing
+- Supabase JS SDK – schema fetching and data insertion
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+1. Fork the repo
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgements
+
+- Built with ❤️ by [waferflopai](https://waferflopai.vercel.app/)
+- Hosted on [Vercel](https://vercel.com)
+
+---
+
+**Made with ☕ and code.**
