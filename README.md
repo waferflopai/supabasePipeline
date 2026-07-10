@@ -88,12 +88,3 @@ Contributions, issues, and feature requests are welcome!
 This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 ---
-
-## 🙏 Acknowledgements
-
-- Built with ❤️ by [waferflopai](https://waferflopai.vercel.app/)
-- Hosted on [Vercel](https://vercel.com)
-
----
-
-**Made with ☕ and code.**
